@@ -1,0 +1,35 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RTT</title>
+    <script>
+      const nbJoursOuvrésParAn = {
+        2020: 253,
+        2021: 254,
+        2022: 253,
+        2023: 251,
+        2024: 252,
+        2025: 251,
+        2026: 252,
+        2027: 254,
+        2028: 251,
+        2029: 252,
+        2030: 251,
+      };
+      const nbJourTravaillés = 218;
+      const nbJourCongés = 25;
+      const now = new Date();
+      const nbRtt =
+        nbJoursOuvrésParAn[now.getFullYear()] -
+        nbJourTravaillés -
+        nbJourCongés +
+        2;
+      console.log({
+        année: now.getFullYear(),
+        nbRtt,
+      });
+    </script>
+  </head>
+  <body></body>
+</html>
