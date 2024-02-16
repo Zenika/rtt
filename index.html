@@ -75,14 +75,7 @@
       >
     </div>
     <div class="years-container" id="yearsContainer">
-      <template id="year-block-template">
-        <div class="year-block">
-          <h2></h2>
-          <p class="rtt"></p>
-          <p class="rtt-cumules"></p>
-          <p class="rtt-posables"></p>
-        </div>
-      </template>
+      <!-- Les blocs d'année seront générés ici -->
     </div>
     <footer>
       <p>
@@ -115,6 +108,15 @@
         pas de valeur légale. Seule la fiche de paie fait foi.
       </p>
     </footer>
+
+    <template id="year-block-template">
+      <div class="year-block">
+        <h2></h2>
+        <p class="rtt"></p>
+        <p class="rtt-cumules"></p>
+        <p class="rtt-posables"></p>
+      </div>
+    </template>
 
     <script>
       window.onload = function () {
