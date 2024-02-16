@@ -75,7 +75,14 @@
       >
     </div>
     <div class="years-container" id="yearsContainer">
-      <!-- Les blocs d'année seront générés ici -->
+      <template id="year-block-template">
+        <div class="year-block">
+          <h2></h2>
+          <p class="rtt"></p>
+          <p class="rtt-cumules"></p>
+          <p class="rtt-posables"></p>
+        </div>
+      </template>
     </div>
     <footer>
       <p>
@@ -144,31 +151,28 @@
         function generateYears() {
           container.innerHTML = "";
           let currentYearBlock;
+          const template = document.getElementById("year-block-template");
           for (let i = 2020; i <= 2029; i++) {
             let rtt = workingDaysByYear[i] - workingDays - paidLeave;
             if (isAutonome) {
               rtt += 2;
             }
-            const block = document.createElement("div");
-            block.className = "year-block";
+
+            const block = template.content.cloneNode(true);
+            block.querySelector("h2").textContent = i;
+            block.querySelector(".rtt").textContent = rtt + " RTT";
+
             if (i === currentYear) {
-              block.classList.add("current-year");
+              block.querySelector("div").classList.add("current-year");
               let accumulatedRtt = (rtt / 12) * currentMonth;
               let posableRtt = accumulatedRtt + 1.5;
-              block.innerHTML =
-                "<h2>" +
-                i +
-                "</h2><p>" +
-                rtt +
-                " RTT</p><p>" +
-                numberFormat.format(accumulatedRtt) +
-                " RTT cumulés</p><p>" +
-                numberFormat.format(posableRtt) +
-                " RTT posables</p>";
-              currentYearBlock = block;
-            } else {
-              block.innerHTML = "<h2>" + i + "</h2><p>" + rtt + " RTT</p>";
+              block.querySelector(".rtt-cumules").textContent =
+                numberFormat.format(accumulatedRtt) + " RTT cumulés";
+              block.querySelector(".rtt-posables").textContent =
+                numberFormat.format(posableRtt) + " RTT posables";
+              currentYearBlock = block.querySelector("div");
             }
+
             container.appendChild(block);
           }
           if (currentYearBlock) {
