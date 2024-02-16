@@ -1,35 +1,187 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RTT</title>
-    <script>
-      const nbJoursOuvrésParAn = {
-        2020: 253,
-        2021: 254,
-        2022: 253,
-        2023: 251,
-        2024: 252,
-        2025: 251,
-        2026: 252,
-        2027: 254,
-        2028: 251,
-        2029: 252,
-        2030: 251,
-      };
-      const nbJourTravaillés = 218;
-      const nbJourCongés = 25;
-      const now = new Date();
-      const nbRtt =
-        nbJoursOuvrésParAn[now.getFullYear()] -
-        nbJourTravaillés -
-        nbJourCongés +
-        2;
-      console.log({
-        année: now.getFullYear(),
-        nbRtt,
-      });
-    </script>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        background: #f3f3f3;
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      .status-choice {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+      }
+      .status-choice label {
+        margin-right: 20px;
+      }
+      .year-block {
+        border: 1px solid #000;
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+      }
+      .year-block h2,
+      .year-block p {
+        margin: 0;
+      }
+      .years-container {
+        display: flex;
+        align-items: center;
+        margin: auto;
+        overflow-x: auto;
+        padding: 20px 0;
+        max-width: 100%;
+      }
+      .year-block.current-year {
+        min-width: 150px;
+        min-height: 150px;
+        border: 2px solid #007bff;
+        background-color: #cce5ff;
+      }
+      footer {
+        text-align: justify;
+        max-width: 700px;
+        padding: 0 20px;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <h1>Compteur RTT</h1>
+    <div class="status-choice">
+      <label
+        ><input type="radio" name="status" value="autonome" checked /> Je suis
+        cadre autonome</label
+      >
+      <label
+        ><input type="radio" name="status" value="non_autonome" /> Je suis cadre
+        non autonome</label
+      >
+    </div>
+    <div class="years-container" id="yearsContainer">
+      <!-- Les blocs d'année seront générés ici -->
+    </div>
+    <footer>
+      <p>
+        <strong>RTT :</strong> Le nombre de jours de RTT est calculé en prenant
+        le nombre de jours ouvrables dans une année (entre 251 et 254), en
+        soustrayant le nombre de jours travaillés (218) et le nombre de jours de
+        congé payé (25). Les cadres autonomes dispose d'un supplément de 2
+        jours, pour compenser l'absence de dispositions relatives aux heures
+        supplémentaires.
+      </p>
+      <p>
+        <strong>RTT cumulés :</strong> Le nombre de jours de RTT accumulés est
+        calculé en prenant le nombre total de RTT pour l'année, en le divisant
+        par 12 pour obtenir le nombre de RTT par mois, puis en multipliant par
+        le nombre de mois révolus dans l'année en cours.
+      </p>
+      <p>
+        <strong>RTT posables :</strong> Le nombre de jours de RTT que vous
+        pouvez poser est calculé en prenant le nombre total de RTT accumulés et
+        en ajoutant 1,5. Cela permet de prendre en compte le fait que vous
+        pouvez poser des jours de RTT avant de les avoir tous accumulés.
+      </p>
+      <p>
+        Ces chiffres représentent un maximum théorique et ne prennent pas en
+        compte les absences qui pourraient entraîner une réduction du nombre de
+        RTT.
+      </p>
+      <p>
+        Les informations fournies par cette page sont à titre indicatif et n'ont
+        pas de valeur légale. Seule la fiche de paie fait foi.
+      </p>
+    </footer>
+
+    <script>
+      window.onload = function () {
+        const container = document.getElementById("yearsContainer");
+        const currentYear = new Date().getFullYear();
+        const currentMonth = new Date().getMonth();
+        const numberFormat = new Intl.NumberFormat("fr-FR", {
+          maximumFractionDigits: 2,
+        });
+        const workingDaysByYear = {
+          2020: 253,
+          2021: 254,
+          2022: 253,
+          2023: 251,
+          2024: 252,
+          2025: 251,
+          2026: 252,
+          2027: 254,
+          2028: 251,
+          2029: 252,
+        };
+        const workingDays = 218;
+        const paidLeave = 25;
+        const statusChoice = document.getElementsByName("status");
+        let isAutonome = true;
+
+        for (let i = 0; i < statusChoice.length; i++) {
+          statusChoice[i].addEventListener("change", function () {
+            isAutonome = this.value === "autonome";
+            generateYears();
+          });
+        }
+
+        function generateYears() {
+          container.innerHTML = "";
+          let currentYearBlock;
+          for (let i = 2020; i <= 2029; i++) {
+            let rtt = workingDaysByYear[i] - workingDays - paidLeave;
+            if (isAutonome) {
+              rtt += 2;
+            }
+            const block = document.createElement("div");
+            block.className = "year-block";
+            if (i === currentYear) {
+              block.classList.add("current-year");
+              let accumulatedRtt = (rtt / 12) * currentMonth;
+              let posableRtt = accumulatedRtt + 1.5;
+              block.innerHTML =
+                "<h2>" +
+                i +
+                "</h2><p>" +
+                rtt +
+                " RTT</p><p>" +
+                numberFormat.format(accumulatedRtt) +
+                " RTT cumulés</p><p>" +
+                numberFormat.format(posableRtt) +
+                " RTT posables</p>";
+              currentYearBlock = block;
+            } else {
+              block.innerHTML = "<h2>" + i + "</h2><p>" + rtt + " RTT</p>";
+            }
+            container.appendChild(block);
+          }
+          if (currentYearBlock) {
+            const scrollPosition =
+              currentYearBlock.offsetLeft -
+              window.innerWidth / 2 +
+              currentYearBlock.offsetWidth / 2;
+            container.scrollTo({ left: scrollPosition, behavior: "smooth" });
+          }
+        }
+
+        generateYears();
+      };
+    </script>
+  </body>
 </html>
