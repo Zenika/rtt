@@ -60,6 +60,28 @@
         max-width: 700px;
         padding: 0 20px;
       }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #282c34;
+          color: #fff;
+        }
+
+        .year-block {
+          border: 1px solid #fff;
+          background-color: #282c34;
+        }
+
+        .year-block.current-year {
+          border: 2px solid #007bff;
+          background-color: #007bff;
+        }
+
+        footer {
+          background-color: #282c34;
+          color: #fff;
+        }
+      }
     </style>
   </head>
   <body>
