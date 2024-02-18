@@ -83,6 +83,7 @@
         }
       }
     </style>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
   </head>
   <body>
     <h1>Compteur RTT</h1>
@@ -99,6 +100,12 @@
     <div class="years-container" id="yearsContainer">
       <!-- Les blocs d'année seront générés ici -->
     </div>
+
+    <div
+      id="googleSignInButton"
+      data-client_id="477183069463-o0itm18dqnhl30fgsh8ol9j30berb92b.apps.googleusercontent.com"
+    ></div>
+
     <footer>
       <p>
         <strong>RTT :</strong> Le nombre de jours de RTT est calculé en prenant
@@ -209,7 +216,31 @@
         }
 
         generateYears();
+
+        google.accounts.id.initialize({
+          client_id:
+            "477183069463-o0itm18dqnhl30fgsh8ol9j30berb92b.apps.googleusercontent.com",
+          callback: handleCredentialResponse,
+        });
+        google.accounts.id.renderButton(
+          document.getElementById("googleSignInButton"),
+          { theme: "outline", size: "large" } // customize the button look & feel
+        );
+        google.accounts.id.prompt(); // also display the One Tap sign-up challenge
       };
+
+      async function handleCredentialResponse(response) {
+        var ID_token = response.credential;
+        // Send ID token to your server for verification and sign in user in your system
+        console.log({ ID_token });
+        await fetch(
+          "http://localhost:3001/test?startDate=2024-01-01&endDate=2024-06-30",
+          {
+            method: "GET",
+            headers: { Authorization: `Bearer ${ID_token}` },
+          }
+        );
+      }
     </script>
   </body>
 </html>
