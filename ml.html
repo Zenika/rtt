@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>
+        Comment calculer le nombre de jours de RTT pour une année donnée ?
+      </h1>
+    </header>
+    <main>
+      <h2>
+        <math>
+          <mi>R</mi>
+          <mo>+</mo>
+
+          <mfrac>
+            <mrow>
+              <mo>(</mo>
+              <mrow displaystyle="true">
+                <munderover>
+                  <mo>∑</mo>
+                  <mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow>
+                  <mrow>
+                    <mn>12</mn>
+                  </mrow>
+                </munderover>
+                <msub><mi>O</mi><mi>m</mi></msub>
+              </mrow>
+              <mo>)</mo>
+              <mi>-</mi>
+              <mi>T</mi>
+              <mi>-</mi>
+              <mi>C</mi>
+              <mi>+</mi>
+              <mi>B</mi>
+            </mrow>
+            <mrow>
+              <mn>12</mn>
+            </mrow>
+          </mfrac>
+          <mrow displaystyle="true">
+            <munderover>
+              <mo>∑</mo>
+              <mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow>
+              <mrow>
+                <mn>12</mn>
+              </mrow>
+            </munderover>
+          </mrow>
+          <msub><mi>P</mi><mi>m</mi></msub>
+          <mo>(</mo>
+          <mn>1</mn>
+          <mo>-</mo>
+          <mfrac>
+            <msub><mi>A</mi><mi>m</mi></msub>
+            <msub><mi>O</mi><mi>m</mi></msub>
+          </mfrac>
+          <mo>)</mo>
+        </math>
+      </h2>
+
+      <dl>
+        <dt>
+          <math><mi>R</mi></math>
+        </dt>
+        <dd>
+          Le reliquat de l'année précédente. A Zenika, généralement zéro, sauf
+          si vous avez consommé plus de RTT l'année précédente que vous n'en
+          aviez acquis, au quel cas il s'agit du nombre négatif libellé "SOLDE
+          RTT" en bas à gauche de votre bulletin de paie du mois de janvier.
+        </dd>
+
+        <dt>
+          <math>
+            <msub><mi>O</mi><mi>m</mi></msub>
+          </math>
+        </dt>
+        <dd>
+          Le nombre de jours ouvrés dans le mois
+          <math><mi>m</mi> </math>.
+        </dd>
+
+        <dt>
+          <math><mi>T</mi></math>
+        </dt>
+        <dd>
+          Le nombre de jours travaillés défini dans votre contrat de travail. A
+          Zenika, 218.
+        </dd>
+
+        <dt>
+          <math><mi>C</mi></math>
+        </dt>
+        <dd>Le nombre de jours de congés payés. A Zenika, 25.</dd>
+
+        <dt>
+          <math><mi>B</mi></math>
+        </dt>
+        <dd>
+          Le nombre de jours de RTT bonus. A Zenika, zéro pour les cadres
+          non-autonomes (qui bénéficient de la rémunération des heures
+          supplémentaires), deux pour les cadres autonomes (qui ne bénéficient
+          pas de la rémunération des heures supplémentaires).
+        </dd>
+
+        <dt>
+          <math>
+            <msub><mi>P</mi><mi>m</mi></msub>
+          </math>
+        </dt>
+        <dd>
+          Le taux de temps partiel pour le mois
+          <math><mi>m</mi> </math>.
+        </dd>
+
+        <dt>
+          <math>
+            <msub><mi>A</mi><mi>m</mi></msub>
+          </math>
+        </dt>
+        <dd>
+          Le nombre de jours d'absences non-rémunérées dans le mois
+          <math> <mi>m</mi></math
+          >. Par exemple : les jours de congés sans solde, de carence, de
+          grèves.
+        </dd>
+      </dl>
+    </main>
+  </body>
+</html>
