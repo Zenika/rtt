@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+    />
+    <style>
+      details > p {
+        font-size: 80%;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form>
+        <fieldset>
+          <label>
+            Année
+            <select name="année" required>
+              <option>2024</option>
+            </select>
+          </label>
+
+          <label>
+            Statut
+            <select name="statut" required>
+              <option>Cadre non-autonome</option>
+              <option>Cadre autonome</option>
+            </select>
+          </label>
+
+          <label>
+            <details>
+              <summary>Reliquat de l'année précédente ℹ️</summary>
+              <p>
+                Consultez votre bulletin de paie du mois de janvier. En bas à
+                gauche, localisez la valeur libellé SOLDE RTT. Si elle est
+                négative (⚠️ le symbole moins est situé à droite du nombre),
+                reportez la valeur ici. Sinon, laissez zéro.
+              </p>
+            </details>
+
+            <input
+              name="reliquat"
+              type="number"
+              max="0"
+              step="0.01"
+              value="0"
+            />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <label>
+            <details>
+              <summary>Temps partiel en janvier ℹ️</summary>
+              <p>Le taux de temps partiel, exprimé en pourcentage.</p>
+            </details>
+
+            <input
+              name="temps-partiel-1"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en février
+
+            <input
+              name="temps-partiel-2"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en mars
+
+            <input
+              name="temps-partiel-3"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en avril
+
+            <input
+              name="temps-partiel-4"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en mai
+
+            <input
+              name="temps-partiel-5"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en juin
+
+            <input
+              name="temps-partiel-6"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en juillet
+
+            <input
+              name="temps-partiel-7"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en août
+
+            <input
+              name="temps-partiel-8"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en septembre
+
+            <input
+              name="temps-partiel-9"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en octobre
+
+            <input
+              name="temps-partiel-10"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en novembre
+
+            <input
+              name="temps-partiel-11"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+
+          <label>
+            Temps partiel en décembre
+
+            <input
+              name="temps-partiel-12"
+              type="number"
+              min="0"
+              max="100"
+              step="10"
+              value="100"
+            />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <label>
+            <details>
+              <summary>Absences en janvier ℹ️</summary>
+              <p>
+                Le nombre de jours d'absences non-rémunérées dans le mois. Par
+                exemple : les jours de congés sans solde, de carence, de grèves.
+              </p>
+            </details>
+
+            <input
+              name="absences-1"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en février
+
+            <input
+              name="absences-2"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en mars
+
+            <input
+              name="absences-3"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en avril
+
+            <input
+              name="absences-4"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en mai
+
+            <input
+              name="absences-5"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en juin
+
+            <input
+              name="absences-6"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en juillet
+
+            <input
+              name="absences-7"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en août
+
+            <input
+              name="absences-8"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en septembre
+
+            <input
+              name="absences-9"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en octobre
+
+            <input
+              name="absences-10"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en novembre
+
+            <input
+              name="absences-11"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+
+          <label>
+            Absences en décembre
+
+            <input
+              name="absences-12"
+              type="number"
+              min="0"
+              step="0.5"
+              value="0"
+            />
+          </label>
+        </fieldset>
+
+        <input name="submit" type="submit" value="Calculer" action="" />
+      </form>
+      <p id="annonce-résultat" class="hidden">
+        Vous cumulerez <mark id="résultat"></mark> jours de RTT au cours de
+        l'année.
+      </p>
+    </main>
+  </body>
+  <script>
+    window.addEventListener("load", () => {
+      const form = document.querySelector("form");
+
+      const tempsPartielInputs = getTempsPartielElements(form);
+      for (const [index, tempsPartielInput] of tempsPartielInputs.entries()) {
+        tempsPartielInput.addEventListener("change", (event) => {
+          const nextTempsPartielInputs = tempsPartielInputs.slice(index + 1);
+          for (const nextTempsPartielInput of nextTempsPartielInputs) {
+            nextTempsPartielInput.value = event.target.value;
+          }
+        });
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const année = form.elements.namedItem("année").value;
+        const joursOuvrésParMois = joursOuvrésParAnnée[année];
+        const statut = form.elements.namedItem("statut").value;
+        const joursBonus = statut === "Cadre autonome" ? 2 : 0;
+        const reliquat = Number(form.elements.namedItem("reliquat").value) || 0;
+        const tempsPartielParMois = getTempsPartielElements(form).map(
+          (element) => Number(element.value) / 100 || 1
+        );
+        const joursDAbsenceParMois = getAbsencesElements(form).map(
+          (element) => Number(element.value) || 0
+        );
+        const { total, cumulParMois } = rttPourLAnnée(
+          Object.values(joursOuvrésParMois),
+          {
+            joursBonus,
+            tempsPartielParMois,
+            joursDAbsenceParMois,
+          }
+        );
+        document.getElementById("résultat").textContent = Intl.NumberFormat(
+          undefined,
+          {
+            maximumFractionDigits: 2,
+          }
+        ).format(total + reliquat);
+        document.getElementById("annonce-résultat").classList.remove("hidden");
+      });
+    });
+
+    function getTempsPartielElements(form) {
+      return lesMois().map((mois) =>
+        form.elements.namedItem(`temps-partiel-${mois}`)
+      );
+    }
+
+    function getAbsencesElements(form) {
+      return lesMois().map((mois) =>
+        form.elements.namedItem(`absences-${mois}`)
+      );
+    }
+
+    function lesMois() {
+      return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    }
+
+    function rttPourLAnnée(
+      joursOuvrésParMois,
+      {
+        joursBonus = 0,
+        joursTravaillés = 218,
+        joursDeCongésPayés = 25,
+        tempsPartielParMois = [],
+        joursDAbsenceParMois = [],
+      } = {}
+    ) {
+      console.assert(
+        Array.isArray(joursOuvrésParMois) && joursOuvrésParMois.length === 12,
+        "Dans la fonction combienDeRttPourLAnnée, le paramètre joursOuvrésParMois doit être un tableau de 12 éléments"
+      );
+      const rttMax =
+        sum(joursOuvrésParMois) -
+        joursTravaillés -
+        joursDeCongésPayés +
+        joursBonus;
+      const cumulParMois = Array.from(joursOuvrésParMois.entries())
+        .map(([mois, joursOuvrés]) => {
+          const tempsPartiel = tempsPartielParMois[mois] ?? 1;
+          const absences = joursDAbsenceParMois[mois] ?? 0;
+          return tempsPartiel * (1 - absences / joursOuvrés);
+        })
+        .map((proportion) => proportion * (rttMax / joursOuvrésParMois.length));
+      return { total: sum(cumulParMois), cumulParMois };
+    }
+
+    function sum(ns) {
+      let result = 0;
+      for (const n of ns) {
+        result += n;
+      }
+      return result;
+    }
+
+    const joursOuvrésParAnnée = {
+      2020: {
+        1: 22,
+        2: 20,
+        3: 22,
+        4: 21,
+        5: 18,
+        6: 21,
+        7: 22,
+        8: 21,
+        9: 22,
+        10: 22,
+        11: 20,
+        12: 22,
+      },
+      2021: {
+        1: 20,
+        2: 20,
+        3: 23,
+        4: 21,
+        5: 19,
+        6: 22,
+        7: 21,
+        8: 22,
+        9: 22,
+        10: 21,
+        11: 20,
+        12: 23,
+      },
+      2022: {
+        1: 21,
+        2: 20,
+        3: 23,
+        4: 20,
+        5: 21,
+        6: 21,
+        7: 20,
+        8: 22,
+        9: 22,
+        10: 21,
+        11: 20,
+        12: 22,
+      },
+      2023: {
+        1: 22,
+        2: 20,
+        3: 23,
+        4: 19,
+        5: 19,
+        6: 22,
+        7: 20,
+        8: 22,
+        9: 21,
+        10: 22,
+        11: 21,
+        12: 20,
+      },
+      2024: {
+        1: 22,
+        2: 21,
+        3: 21,
+        4: 21,
+        5: 19,
+        6: 20,
+        7: 23,
+        8: 21,
+        9: 21,
+        10: 23,
+        11: 19,
+        12: 21,
+      },
+      2025: {
+        1: 22,
+        2: 20,
+        3: 21,
+        4: 21,
+        5: 19,
+        6: 20,
+        7: 22,
+        8: 20,
+        9: 22,
+        10: 23,
+        11: 19,
+        12: 22,
+      },
+      2026: {
+        1: 21,
+        2: 20,
+        3: 22,
+        4: 21,
+        5: 17,
+        6: 22,
+        7: 22,
+        8: 21,
+        9: 22,
+        10: 22,
+        11: 20,
+        12: 22,
+      },
+      2027: {
+        1: 20,
+        2: 20,
+        3: 22,
+        4: 22,
+        5: 19,
+        6: 22,
+        7: 21,
+        8: 22,
+        9: 22,
+        10: 21,
+        11: 20,
+        12: 23,
+      },
+      2028: {
+        1: 21,
+        2: 21,
+        3: 23,
+        4: 19,
+        5: 20,
+        6: 21,
+        7: 20,
+        8: 22,
+        9: 21,
+        10: 22,
+        11: 21,
+        12: 20,
+      },
+      2029: {
+        1: 22,
+        2: 20,
+        3: 22,
+        4: 20,
+        5: 19,
+        6: 21,
+        7: 22,
+        8: 22,
+        9: 20,
+        10: 23,
+        11: 21,
+        12: 20,
+      },
+      2030: {
+        1: 22,
+        2: 20,
+        3: 21,
+        4: 21,
+        5: 20,
+        6: 19,
+        7: 23,
+        8: 21,
+        9: 21,
+        10: 23,
+        11: 19,
+        12: 21,
+      },
+    };
+  </script>
+</html>
